@@ -34,9 +34,9 @@ namespace JogoGourmet
 
             if (ret == DialogResult.Yes)
             {
-                ///ret = PerguntarPrato("O Prato que você pensou é Lasanha?", "Confirm");
+                ret = PerguntarPrato("O Prato que você pensou é Lasanha?", "Confirm");
 
-                listapadrao
+                //listapadrao
 
                 if (ret == DialogResult.Yes)
                 {
