@@ -84,7 +84,7 @@ namespace JogoGourmet
             }
             else
             {
-                Desisto("Desisto", "Qual prato você pensou ?");
+                Desistir("Desisto", "Qual prato você pensou ?");
             }
 
             return ret;
@@ -96,7 +96,7 @@ namespace JogoGourmet
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
 
-        private void Desisto(string caption, string textoLabel)
+        private void Desistir(string caption, string textoLabel)
         {
             formDialog = new Form2();
             formDialog.Text = caption;
@@ -113,7 +113,7 @@ namespace JogoGourmet
             formDialog.txtResult.Text = string.Empty;
             textoLabel = $" {prato.NomePrato} é ________ Mas Bolo de Chocolate não.";
 
-            Complete("Complete", textoLabel, prato);
+            Completar("Complete", textoLabel, prato);
 
             //if (ret == DialogResult.OK)
             //{
@@ -141,7 +141,7 @@ namespace JogoGourmet
             formDialog.Dispose();
         }
 
-        private void Complete(string caption, string textoLabel, Prato prato)
+        private void Completar(string caption, string textoLabel, Prato prato)
         {
             formDialog.Text = caption;
             formDialog.lblTexto.Text = textoLabel;
