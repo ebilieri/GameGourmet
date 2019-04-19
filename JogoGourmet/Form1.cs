@@ -1,51 +1,40 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace JogoGourmet
 {
     public partial class Form1 : Form
     {
-        Form2 formDialog;
-        List<Prato> listaAlternativa;
-        List<Prato> listaPadrao;
-        
+        private PerguntarPrato habilidade;
 
         public Form1()
         {
-            InitializeComponent();
-            formDialog = new Form2();
-            listaAlternativa = new List<Prato>();
-            listaAlternativa.Add(new Prato { NomePrato = "Bolo de Chocolate" });
-
-            listaPadrao = new List<Prato>();
-            listaPadrao.Add(new Prato { NomePrato = "Lasanha" });
+            InitializeComponent();            
         }
 
         private void btnOK_Click(object sender, EventArgs e)
+        {            
+            habilidade.Executar(habilidade);            
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
-            PratoService pratoService = new PratoService(formDialog, this);
-            var ret = pratoService.PerguntarPrato("O prato que pensou é massa?", "Confirm");
+            //Instancia classe para apresentação das mensagens em tela
+            InteracaoPorWindowsForm interacaoComUsuario = new InteracaoPorWindowsForm();
 
-            if (ret == DialogResult.Yes)
-            {
-                pratoService.Perguntar(ret, listaPadrao);
-            }
-            else
-            {
-                pratoService.Perguntar(ret, listaAlternativa);
-            }
+            //Classe aprende, responsavel por fazer a criação da nova habilidade e do prato
+            Aprende aprende = new Aprende(interacaoComUsuario);
 
-            if (formDialog != null)
-                formDialog.Dispose();
-        }       
+            //preserva o prato da resposta sim em todos os laços
+            //AfirmaVitoria afirmaVitoria = new AfirmaVitoria(interacaoComUsuario);
+            PratoService pratoService = new PratoService();
 
-       
+            //Cria prato para primeira execução do jogo
+            Prato pratoPadrao = new Prato(pratoService, aprende, "Lasanha", interacaoComUsuario);
+            Prato pratoAlternativo = new Prato(pratoService, aprende, "Bolo de Chocolate", interacaoComUsuario);
+
+            //Cria habilidade para primeira execução do jogo
+            habilidade = new PerguntarPrato(pratoPadrao, pratoAlternativo, "massa", interacaoComUsuario);
+        }
     }
 }
