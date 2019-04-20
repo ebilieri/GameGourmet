@@ -2,12 +2,12 @@
 {
     public class Prato :Acao
     {
-        private const string _PERGUNTA = "O prato que você pensou foi ";
+        private const string _PERGUNTA = "O prato que você pensou é ";
         private PratoService _pratoService;
         private Acao aprende;
 
-        public Prato(PratoService pratoService, Aprende aprende, string descricao, InteracaoPorWindowsForm interacaoComUsuario)
-            : base(descricao, interacaoComUsuario)
+        public Prato(PratoService pratoService, Aprende aprende, string descricao)
+            : base(descricao, pratoService)
         {
             this._pratoService = pratoService;
             this.aprende = aprende;

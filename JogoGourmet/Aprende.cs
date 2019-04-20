@@ -8,21 +8,21 @@ namespace JogoGourmet
 {
    public class Aprende : Acao
     {
-        private InteracaoPorWindowsForm interacaoComUsuario;
+        //private InteracaoPorWindowsForm interacaoComUsuario;
         private PratoService _pratoService;
 
-        public Aprende(InteracaoPorWindowsForm interacaoComUsuario, PratoService pratoService)
-            : base("", interacaoComUsuario)
+        public Aprende( PratoService pratoService)
+            : base("", pratoService)
         {
             // TODO: Complete member initialization
-            this.interacaoComUsuario = interacaoComUsuario;
+            //this.interacaoComUsuario = interacaoComUsuario;
             _pratoService = pratoService;
         }
 
         public override Acao Executar(Acao pratoAntigo)
         {
-            string prato = this.INTERACAO_COM_USUARIO.aprender("Qual prato você pensou?", "Desisto");
-            string habilidade = this.INTERACAO_COM_USUARIO.aprender($"{prato} é _______ mas {pratoAntigo.Descricao} não.", "Complete");
+            string prato = _pratoService.aprender("Qual prato você pensou?", "Desisto");
+            string habilidade = _pratoService.aprender($"{prato} é _______ mas {pratoAntigo.Descricao} não.", "Complete");
 
             return criaNovaHabilidadeComAnimais(pratoAntigo, prato, habilidade);
         }
@@ -30,8 +30,8 @@ namespace JogoGourmet
         private PerguntarPrato criaNovaHabilidadeComAnimais(Acao pratoAntigo, string prato, string habilidade)
         {
             //Prato novoAnimal = new Prato(new AfirmaVitoria(this.INTERACAO_COM_USUARIO), this, prato, this.INTERACAO_COM_USUARIO);
-            Prato novoAnimal = new Prato(new PratoService(), this, prato, this.INTERACAO_COM_USUARIO);
-            return new PerguntarPrato(novoAnimal, pratoAntigo, habilidade, this.INTERACAO_COM_USUARIO);
+            Prato novoAnimal = new Prato(new PratoService(), this, prato);
+            return new PerguntarPrato(novoAnimal, pratoAntigo, habilidade, _pratoService);
         }
     }
 }

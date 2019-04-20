@@ -6,8 +6,8 @@
         private Acao _respostaSim;
         private Acao _respostaNao;
 
-        public PerguntarPrato(Acao respostaSim, Acao respostaNao, string caracteristica, InteracaoPorWindowsForm interacaoComUsuario)
-            : base(caracteristica, interacaoComUsuario)
+        public PerguntarPrato(Acao respostaSim, Acao respostaNao, string caracteristica, PratoService pratoService)
+            : base(caracteristica, pratoService)
         {
             _respostaSim = respostaSim;
             _respostaNao = respostaNao;

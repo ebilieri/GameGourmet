@@ -11,28 +11,35 @@ namespace JogoGourmet
     {
 
         private readonly string _descricao;
-        private readonly InteracaoPorWindowsForm _interacaoComUsuario;
+        //private readonly InteracaoPorWindowsForm _interacaoComUsuario;
+        PratoService _pratoService;
 
-        public InteracaoPorWindowsForm INTERACAO_COM_USUARIO
+        public PratoService Prata_Usuario
         {
-            get
-            {
-                return _interacaoComUsuario;
-            }
+            get { return _pratoService; }
         }
 
-        public Acao(string descricao, InteracaoPorWindowsForm interacaoComUsuario)
+        //public InteracaoPorWindowsForm INTERACAO_COM_USUARIO
+        //{
+        //    get
+        //    {
+        //        return _interacaoComUsuario;
+        //    }
+        //}
+
+        public Acao(string descricao, PratoService pratoService)
         {
             _descricao = descricao;
-            _interacaoComUsuario = interacaoComUsuario;
+            _pratoService = pratoService;
         }
 
         
         public abstract Acao Executar(Acao acao);
 
+        //remover daqui
         public bool MostraPergunta(string pergunta, string carac)
         {
-            return INTERACAO_COM_USUARIO.interagir(pergunta + carac);
+            return Prata_Usuario.interagir(pergunta + carac);
         }
 
         public bool IsPerguntaValida(DialogResult pergunta)
