@@ -139,6 +139,21 @@ namespace JogoGourmet
         //    _formDialog.Dispose();
         //}
 
+
+        public  Acao AprenderPrato(Acao pratoAntigo)
+        {
+            string prato = aprender("Qual prato você pensou?", "Desisto");
+            string habilidade = aprender($"{prato} é _______ mas {pratoAntigo.Descricao} não.", "Complete");
+
+            return AdicionarNovoPrato(pratoAntigo, prato, habilidade);
+        }
+
+        private PerguntarPrato AdicionarNovoPrato(Acao pratoAntigo, string prato, string habilidade)
+        {
+            Prato novoAnimal = new Prato( this, prato);
+            return new PerguntarPrato(novoAnimal, pratoAntigo, habilidade, this);
+        }
+
         //remover daqui
         public bool MostraPergunta(string pergunta, string carac)
         {

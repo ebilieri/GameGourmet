@@ -5,7 +5,7 @@ namespace JogoGourmet
 {
     public partial class Form1 : Form
     {
-        private Aprende aprende;
+        //private Aprende aprende;
         private PerguntarPrato perguntar;
 
         Prato pratoPadrao;
@@ -19,15 +19,15 @@ namespace JogoGourmet
              pratoService = new PratoService();
 
             //Classe aprende, responsavel por fazer a criação da nova habilidade e do prato
-            aprende = new Aprende(pratoService);
+           // aprende = new Aprende(pratoService);
 
             //preserva o prato da resposta sim em todos os laços
             //AfirmaVitoria afirmaVitoria = new AfirmaVitoria(interacaoComUsuario);
 
 
             //Cria prato para primeira execução do jogo
-             pratoPadrao = new Prato(pratoService, aprende, "Lasanha");
-             pratoAlternativo = new Prato(pratoService, aprende, "Bolo de Chocolate");
+             pratoPadrao = new Prato(pratoService, "Lasanha");
+             pratoAlternativo = new Prato(pratoService, "Bolo de Chocolate");
 
             //Cria habilidade para primeira execução do jogo
             perguntar = new PerguntarPrato(pratoPadrao, pratoAlternativo, "massa", pratoService);

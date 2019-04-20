@@ -6,11 +6,11 @@
         private PratoService _pratoService;
         private Acao _armazenaPrato;
 
-        public Prato(PratoService pratoService, Aprende aprende, string descricao)
+        public Prato(PratoService pratoService, string descricao)
             : base(descricao)
         {
             _pratoService = pratoService;
-            _armazenaPrato = aprende;
+            //_armazenaPrato = aprende;
         }
 
         public override Acao Perguntar(Acao habilidade)
@@ -24,7 +24,7 @@
             else
             {
                 // armazenar o prato informado
-                return _armazenaPrato.Perguntar(this);
+                return _pratoService.AprenderPrato(this);// _armazenaPrato.Perguntar(this);
             }
         }
     }
