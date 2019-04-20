@@ -7,7 +7,7 @@ namespace JogoGourmet
         public BasePrato Aprender(BasePrato pratoAntigo)
         {
             string nomePrato = Aprender("Qual prato você pensou?", "Desisto");
-            string caracteristica = Aprender($"{nomePrato} é _______ mas {pratoAntigo.NomePrato} não.", "Complete");
+            string caracteristica = Aprender($"{nomePrato} é _______ mas {pratoAntigo.Descricao} não.", "Complete");
 
             return AdicionarNovoPrato(pratoAntigo, nomePrato, caracteristica);
         }

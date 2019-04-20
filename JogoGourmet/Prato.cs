@@ -14,7 +14,7 @@
         public override BasePrato Perguntar()
         {
             // Perguntar prato
-            if (_pratoService.MostraPergunta(_PERGUNTA, NomePrato))
+            if (_pratoService.MostraPergunta(_PERGUNTA, Descricao))
             {
                 _pratoService.Acertou();
                 return this;
