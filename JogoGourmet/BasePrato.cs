@@ -2,13 +2,13 @@
 {
     public abstract class BasePrato
     {        
-        public string Descricao { get; }
+        public string NomePrato { get; }
 
-        public BasePrato(string descricao)
+        public BasePrato(string nomePrato)
         {
-            Descricao = descricao;           
+            NomePrato = nomePrato;           
         }
         
-        public abstract BasePrato Perguntar(BasePrato acao);                      
+        public abstract BasePrato Perguntar();                      
     }
 }

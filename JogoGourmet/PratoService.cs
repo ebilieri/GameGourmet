@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace JogoGourmet
 {
@@ -11,10 +6,10 @@ namespace JogoGourmet
     {
         public BasePrato Aprender(BasePrato pratoAntigo)
         {
-            string prato = Aprender("Qual prato você pensou?", "Desisto");
-            string habilidade = Aprender($"{prato} é _______ mas {pratoAntigo.Descricao} não.", "Complete");
+            string nomePrato = Aprender("Qual prato você pensou?", "Desisto");
+            string caracteristica = Aprender($"{nomePrato} é _______ mas {pratoAntigo.NomePrato} não.", "Complete");
 
-            return AdicionarNovoPrato(pratoAntigo, prato, habilidade);
+            return AdicionarNovoPrato(pratoAntigo, nomePrato, caracteristica);
         }
 
         public string Aprender(string textoPergunta, string textoCaption)
@@ -27,16 +22,16 @@ namespace JogoGourmet
 
             return form2.txtResult.Text;
         }
-               
-        private PerguntarPrato AdicionarNovoPrato(BasePrato pratoAntigo, string prato, string habilidade)
+
+        private PerguntarPrato AdicionarNovoPrato(BasePrato pratoAntigo, string nomePrato, string caracteristica)
         {
-            Prato novoAnimal = new Prato( this, prato);
-            return new PerguntarPrato(novoAnimal, pratoAntigo, habilidade, this);
+            Prato novoPrato = new Prato(this, nomePrato);
+            return new PerguntarPrato(novoPrato, pratoAntigo, caracteristica, this);
         }
-        
-        public bool MostraPergunta(string pergunta, string carac)
+
+        public bool MostraPergunta(string pergunta, string caracteristica)
         {
-            return Interagir(pergunta + carac);
+            return Interagir(pergunta + caracteristica);
         }
 
         public bool IsPerguntaValida(DialogResult pergunta)
@@ -54,12 +49,9 @@ namespace JogoGourmet
             return MessageBox.Show($"{ pergunta}?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
 
-        
-
         public void Acertou()
         {
-            MessageBox.Show("Acertei de novo!", "Jogo Gourmet",
-                        MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            MessageBox.Show("Acertei de novo!", "Jogo Gourmet", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
     }
 }

@@ -5,16 +5,16 @@
         private const string _PERGUNTA = "O prato que você pensou é ";
         private PratoService _pratoService;
         
-        public Prato(PratoService pratoService, string descricao)
-            : base(descricao)
+        public Prato(PratoService pratoService, string nomePrato)
+            : base(nomePrato)
         {
             _pratoService = pratoService;            
         }
 
-        public override BasePrato Perguntar(BasePrato habilidade)
+        public override BasePrato Perguntar()
         {
             // Perguntar prato
-            if (_pratoService.MostraPergunta(_PERGUNTA, Descricao))
+            if (_pratoService.MostraPergunta(_PERGUNTA, NomePrato))
             {
                 _pratoService.Acertou();
                 return this;

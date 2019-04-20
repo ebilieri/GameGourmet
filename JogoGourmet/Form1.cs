@@ -19,13 +19,13 @@ namespace JogoGourmet
              pratoPadrao = new Prato(pratoService, "Lasanha");
              pratoAlternativo = new Prato(pratoService, "Bolo de Chocolate");
 
-            //Cria prato para primeira execução do jogo
+            //Apresenta prato na primeira execução do jogo
             perguntar = new PerguntarPrato(pratoPadrao, pratoAlternativo, "massa", pratoService);
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {            
-            perguntar.Perguntar(null);            
+            perguntar.Perguntar();            
         }        
     }
 }
