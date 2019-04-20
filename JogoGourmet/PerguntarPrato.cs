@@ -1,13 +1,13 @@
 ﻿namespace JogoGourmet
 {
-    public class PerguntarPrato : Acao
+    public class PerguntarPrato : BasePrato
     {
         private const string _PERGUNTA = "O prato que você pensou é ";
-        private Acao _respostaSim;
-        private Acao _respostaNao;
+        private BasePrato _respostaSim;
+        private BasePrato _respostaNao;
         private PratoService _pratoService;
 
-        public PerguntarPrato(Acao respostaSim, Acao respostaNao, string caracteristica, PratoService pratoService)
+        public PerguntarPrato(BasePrato respostaSim, BasePrato respostaNao, string caracteristica, PratoService pratoService)
             : base(caracteristica)
         {
             _respostaSim = respostaSim;
@@ -15,7 +15,7 @@
             _pratoService = pratoService;
         }
 
-        public override Acao Perguntar(Acao acao)
+        public override BasePrato Perguntar(BasePrato acao)
         {
             //Mostra a pergunta com a habilidade para tentar advinhar o prato
             //em caso qualquer das resposta, é aqui que acontece a mágia do jogo

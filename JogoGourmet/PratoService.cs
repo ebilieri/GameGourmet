@@ -9,173 +9,15 @@ namespace JogoGourmet
 {
     public class PratoService
     {
-        private Form2 _formDialog;
-        private Form1 _formOwner;
-        private string textoRetorno;
-        private int countPratos = 0;
-
-
-        //public PratoService(Form2 formDialog, Form1 formOwner)
-        //{
-        //    _formDialog = formDialog;
-        //    _formOwner = formOwner;
-        //}
-
-        //public void Perguntar(DialogResult ret, List<Prato> listaPratos)
-        //{
-        //    if (listaPratos.Count == 1)
-        //    {
-        //        PerguntarPrato(listaPratos[0], listaPratos);
-        //    }
-        //    else
-        //    {
-        //        int i = 1;
-        //        for (i = 1; i < listaPratos.Count; i++)
-        //        {
-
-        //            if (listaPratos.Count == i + 1 && listaPratos.Count > 2)
-        //            {
-        //                ret = PerguntarPrato($"O prato que você pensou é {listaPratos[0].NomePrato}?", "Confirm");
-        //                if (ret == DialogResult.Yes)
-        //                {
-        //                    Acertou();
-        //                    break;
-        //                }
-        //            }
-        //            else
-        //                ret = PerguntarPrato($"O prato que você pensou é {listaPratos[i].Caracteristica}?", "Confirm");
-
-        //            if (ret == DialogResult.Yes)
-        //            {
-        //                //($"O prato que você pensou é {listaPratos[i].Caracteristica}?", "Confirm");
-        //                PerguntarPrato(listaPratos[i], listaPratos);
-        //                break;
-        //            }
-        //            else
-        //            {
-        //                if (i == listaPratos.Count - 1)
-        //                {
-        //                    Desistir("Desisto", "Qual prato você pensou ?", listaPratos[0], listaPratos);
-        //                    break;
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
-
-        //public bool PerguntarPrato(Prato prato, List<Prato> listaPratos)
-        //{
-        //    bool acertei = false;
-        //    var ret = PerguntarPrato($"O prato que você pensou é {prato.NomePrato}?", "Confirm");
-
-        //    if (ret == DialogResult.Yes)
-        //    {
-        //        Acertou();
-
-        //        acertei = true;
-        //    }
-        //    else
-        //    {
-        //        if (listaPratos.Count > 0 && listaPratos.Count > countPratos + 1)
-        //        {
-        //            countPratos++;
-        //            acertei = PerguntarPrato(listaPratos[0], listaPratos);
-        //        }
-
-        //        if (!acertei)
-        //        {
-        //            Desistir("Desisto", "Qual prato você pensou ?", prato, listaPratos);
-        //            acertei = true;
-        //        }
-        //    }
-
-        //    return acertei;
-        //}
-
-        //public DialogResult PerguntarPrato(string mensagem, string caption)
-        //{
-        //    return MessageBox.Show(mensagem, caption,
-        //        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-        //}
-
-        //private void Desistir(string caption, string textoLabel, Prato prato, List<Prato> listaPratos)
-        //{
-        //    _formDialog = new Form2();
-        //    _formDialog.Text = caption;
-        //    _formDialog.lblTexto.Text = textoLabel;
-
-        //    var ret = _formDialog.ShowDialog(_formOwner);
-
-        //    var novoPrato = new Prato();
-        //    if (string.IsNullOrWhiteSpace(_formDialog.txtResult.Text))
-        //        novoPrato.NomePrato = "null";
-        //    else
-        //        novoPrato.NomePrato = _formDialog.txtResult.Text;
-
-        //    _formDialog.txtResult.Text = string.Empty;
-        //    textoLabel = $" {novoPrato.NomePrato} é ________ mas {prato.NomePrato} não.";
-
-
-        //    // Completar dados do prato
-        //    _formDialog.Text = caption;
-        //    _formDialog.lblTexto.Text = textoLabel;
-
-        //    ret = _formDialog.ShowDialog(_formOwner);
-
-        //    if (ret == DialogResult.OK)
-        //    {
-        //        textoRetorno = _formDialog.txtResult.Text;
-
-        //        novoPrato.Caracteristica = textoRetorno;
-
-        //        listaPratos.Add(novoPrato);
-
-        //    }
-        //    else
-        //    {
-        //        textoRetorno = null;
-        //    }
-
-        //    _formDialog.Dispose();
-        //}
-
-
-        public  Acao AprenderPrato(Acao pratoAntigo)
+        public BasePrato Aprender(BasePrato pratoAntigo)
         {
-            string prato = aprender("Qual prato você pensou?", "Desisto");
-            string habilidade = aprender($"{prato} é _______ mas {pratoAntigo.Descricao} não.", "Complete");
+            string prato = Aprender("Qual prato você pensou?", "Desisto");
+            string habilidade = Aprender($"{prato} é _______ mas {pratoAntigo.Descricao} não.", "Complete");
 
             return AdicionarNovoPrato(pratoAntigo, prato, habilidade);
         }
 
-        private PerguntarPrato AdicionarNovoPrato(Acao pratoAntigo, string prato, string habilidade)
-        {
-            Prato novoAnimal = new Prato( this, prato);
-            return new PerguntarPrato(novoAnimal, pratoAntigo, habilidade, this);
-        }
-
-        //remover daqui
-        public bool MostraPergunta(string pergunta, string carac)
-        {
-            return interagir(pergunta + carac);
-        }
-
-        public bool IsPerguntaValida(DialogResult pergunta)
-        {
-            return pergunta == DialogResult.Yes;
-        }
-
-        public bool interagir(string pergunta)
-        {
-            return DialogResult.Yes == this.mostrarPergunta(pergunta);
-        }
-
-        public DialogResult mostrarPergunta(string pergunta)
-        {
-            return MessageBox.Show($"{ pergunta}?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-        }
-
-        public string aprender(string textoPergunta, string textoCaption)
+        public string Aprender(string textoPergunta, string textoCaption)
         {
             Form2 form2 = new Form2();
             form2.Text = textoCaption;
@@ -183,9 +25,36 @@ namespace JogoGourmet
 
             form2.ShowDialog();
 
-            //string retorno = form2.txtResult.Text
             return form2.txtResult.Text;
         }
+               
+        private PerguntarPrato AdicionarNovoPrato(BasePrato pratoAntigo, string prato, string habilidade)
+        {
+            Prato novoAnimal = new Prato( this, prato);
+            return new PerguntarPrato(novoAnimal, pratoAntigo, habilidade, this);
+        }
+        
+        public bool MostraPergunta(string pergunta, string carac)
+        {
+            return Interagir(pergunta + carac);
+        }
+
+        public bool IsPerguntaValida(DialogResult pergunta)
+        {
+            return pergunta == DialogResult.Yes;
+        }
+
+        public bool Interagir(string pergunta)
+        {
+            return DialogResult.Yes == MostrarPergunta(pergunta);
+        }
+
+        public DialogResult MostrarPergunta(string pergunta)
+        {
+            return MessageBox.Show($"{ pergunta}?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        }
+
+        
 
         public void Acertou()
         {
