@@ -19,7 +19,7 @@ namespace JogoGourmet
             _pratoService = pratoService;
         }
 
-        public override Acao Executar(Acao pratoAntigo)
+        public override Acao Perguntar(Acao pratoAntigo)
         {
             string prato = _pratoService.aprender("Qual prato você pensou?", "Desisto");
             string habilidade = _pratoService.aprender($"{prato} é _______ mas {pratoAntigo.Descricao} não.", "Complete");

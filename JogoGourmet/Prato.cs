@@ -13,19 +13,19 @@
             this.aprende = aprende;
         }
 
-        public override Acao Executar(Acao habilidade)
+        public override Acao Perguntar(Acao habilidade)
         {
             //Mostra pergunta para tentar advinhar o prato, caso advinhe o jogo ganha.
             //Em caso de erro, o jogo pede para ser ensinado retornando assim o nó de
             //habilidade e prato aprendido
-            if (MostraPergunta(_PERGUNTA, Descricao))
+            if (_pratoService.MostraPergunta(_PERGUNTA, Descricao))
             {
                 // return this.afirmaVitoria.Executar(this);
                 _pratoService.Acertou();
                 return this;
             }
             else
-                return aprende.Executar(this);
+                return aprende.Perguntar(this);
         }
     }
 }

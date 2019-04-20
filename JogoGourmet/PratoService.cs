@@ -139,6 +139,12 @@ namespace JogoGourmet
         //    _formDialog.Dispose();
         //}
 
+        //remover daqui
+        public bool MostraPergunta(string pergunta, string carac)
+        {
+            return interagir(pergunta + carac);
+        }
+
         public bool interagir(string pergunta)
         {
             return DialogResult.Yes == this.mostrarPergunta(pergunta);
