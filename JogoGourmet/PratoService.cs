@@ -145,6 +145,11 @@ namespace JogoGourmet
             return interagir(pergunta + carac);
         }
 
+        public bool IsPerguntaValida(DialogResult pergunta)
+        {
+            return pergunta == DialogResult.Yes;
+        }
+
         public bool interagir(string pergunta)
         {
             return DialogResult.Yes == this.mostrarPergunta(pergunta);

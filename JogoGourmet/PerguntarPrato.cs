@@ -8,7 +8,7 @@
         private PratoService _pratoService;
 
         public PerguntarPrato(Acao respostaSim, Acao respostaNao, string caracteristica, PratoService pratoService)
-            : base(caracteristica, pratoService)
+            : base(caracteristica)
         {
             _respostaSim = respostaSim;
             _respostaNao = respostaNao;

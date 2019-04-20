@@ -1,31 +1,31 @@
 ﻿namespace JogoGourmet
 {
-    public class Prato :Acao
+    public class Prato : Acao
     {
         private const string _PERGUNTA = "O prato que você pensou é ";
         private PratoService _pratoService;
-        private Acao aprende;
+        private Acao _armazenaPrato;
 
         public Prato(PratoService pratoService, Aprende aprende, string descricao)
-            : base(descricao, pratoService)
+            : base(descricao)
         {
-            this._pratoService = pratoService;
-            this.aprende = aprende;
+            _pratoService = pratoService;
+            _armazenaPrato = aprende;
         }
 
         public override Acao Perguntar(Acao habilidade)
         {
-            //Mostra pergunta para tentar advinhar o prato, caso advinhe o jogo ganha.
-            //Em caso de erro, o jogo pede para ser ensinado retornando assim o nó de
-            //habilidade e prato aprendido
+            // Perguntar prato
             if (_pratoService.MostraPergunta(_PERGUNTA, Descricao))
             {
-                // return this.afirmaVitoria.Executar(this);
                 _pratoService.Acertou();
                 return this;
             }
             else
-                return aprende.Perguntar(this);
+            {
+                // armazenar o prato informado
+                return _armazenaPrato.Perguntar(this);
+            }
         }
     }
 }
