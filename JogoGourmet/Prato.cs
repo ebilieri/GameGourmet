@@ -5,8 +5,8 @@
         private const string _PERGUNTA = "O prato que você pensou é ";
         private IPratoService _pratoService;
 
-        public Prato(IPratoService pratoService, string nomePrato)
-            : base(nomePrato)
+        public Prato(IPratoService pratoService, string descricao)
+            : base(descricao)
         {
             _pratoService = pratoService;
         }

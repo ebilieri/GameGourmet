@@ -7,8 +7,8 @@
         private BasePrato _respostaNao;
         private IPratoService _pratoService;
 
-        public PratoFilho(BasePrato respostaSim, BasePrato respostaNao, string descricao, IPratoService pratoService)
-            : base(descricao)
+        public PratoFilho(BasePrato respostaSim, BasePrato respostaNao, string caracteristica, IPratoService pratoService)
+            : base(caracteristica)
         {
             _respostaSim = respostaSim;
             _respostaNao = respostaNao;
