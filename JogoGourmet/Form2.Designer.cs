@@ -49,7 +49,7 @@
             this.lblTexto.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblTexto.AutoSize = true;
             this.lblTexto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTexto.Location = new System.Drawing.Point(67, 9);
+            this.lblTexto.Location = new System.Drawing.Point(59, 9);
             this.lblTexto.Name = "lblTexto";
             this.lblTexto.Size = new System.Drawing.Size(191, 17);
             this.lblTexto.TabIndex = 1;
