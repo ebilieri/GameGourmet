@@ -19,5 +19,11 @@ namespace JogoGourmet
         {
             DialogResult = DialogResult.Cancel;
         }
+
+        private void txtResult_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                DialogResult = DialogResult.OK;
+        }
     }
 }

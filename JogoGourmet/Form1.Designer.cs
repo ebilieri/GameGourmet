@@ -37,7 +37,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(87, 24);
+            this.label1.Location = new System.Drawing.Point(95, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(225, 17);
             this.label1.TabIndex = 0;
@@ -58,7 +58,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(419, 121);
+            this.ClientSize = new System.Drawing.Size(434, 121);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.label1);
             this.Name = "Form1";

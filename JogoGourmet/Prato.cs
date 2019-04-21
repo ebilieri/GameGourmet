@@ -4,11 +4,11 @@
     {
         private const string _PERGUNTA = "O prato que você pensou é ";
         private IPratoService _pratoService;
-        
+
         public Prato(IPratoService pratoService, string nomePrato)
             : base(nomePrato)
         {
-            _pratoService = pratoService;            
+            _pratoService = pratoService;
         }
 
         public override BasePrato Perguntar()
@@ -16,6 +16,7 @@
             // Perguntar prato
             if (_pratoService.Perguntar(_PERGUNTA, Descricao))
             {
+                // Encerrar jogo ao acertar
                 _pratoService.Encerrar();
                 return this;
             }

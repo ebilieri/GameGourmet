@@ -6,9 +6,11 @@ namespace JogoGourmet
     {
         public BasePrato Aprender(BasePrato pratoAntigo)
         {
+            // Obter prato digitado
             string nomePrato = Aprender("Qual prato você pensou?", "Desisto");
+            // Obter caracteristica do prato digitado
             string caracteristica = Aprender($"{nomePrato} é _______ mas {pratoAntigo.Descricao} não.", "Complete");
-
+            // Armazenar prato digitado
             return AdicionarNovoPrato(pratoAntigo, nomePrato, caracteristica);
         }
 
@@ -19,14 +21,14 @@ namespace JogoGourmet
             form2.lblTexto.Text = textoPergunta;
 
             form2.ShowDialog();
-
+            // Retornar informções digitadas
             return form2.txtResult.Text;
         }
 
-        public PerguntaPrato AdicionarNovoPrato(BasePrato pratoAntigo, string nomePrato, string caracteristica)
+        public PratoFilho AdicionarNovoPrato(BasePrato pratoAntigo, string nomePrato, string caracteristica)
         {
             Prato novoPrato = new Prato(this, nomePrato);
-            return new PerguntaPrato(novoPrato, pratoAntigo, caracteristica, this);
+            return new PratoFilho(novoPrato, pratoAntigo, caracteristica, this);
         }
 
         public bool Perguntar(string pergunta)

@@ -8,7 +8,7 @@ namespace JogoGourmet
 
         string Aprender(string textoPergunta, string textoCaption);
 
-        PerguntaPrato AdicionarNovoPrato(BasePrato pratoAntigo, string nomePrato, string caracteristica);
+        PratoFilho AdicionarNovoPrato(BasePrato pratoAntigo, string nomePrato, string caracteristica);
 
         bool Perguntar(string pergunta);
 
