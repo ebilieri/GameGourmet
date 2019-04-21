@@ -2,7 +2,7 @@
 
 namespace JogoGourmet
 {
-    public class PratoService
+    public class PratoService : IPratoService
     {
         public BasePrato Aprender(BasePrato pratoAntigo)
         {
@@ -23,35 +23,30 @@ namespace JogoGourmet
             return form2.txtResult.Text;
         }
 
-        private PerguntarPrato AdicionarNovoPrato(BasePrato pratoAntigo, string nomePrato, string caracteristica)
+        public PerguntaPrato AdicionarNovoPrato(BasePrato pratoAntigo, string nomePrato, string caracteristica)
         {
             Prato novoPrato = new Prato(this, nomePrato);
-            return new PerguntarPrato(novoPrato, pratoAntigo, caracteristica, this);
+            return new PerguntaPrato(novoPrato, pratoAntigo, caracteristica, this);
         }
 
-        public bool MostraPergunta(string pergunta, string caracteristica)
+        public bool Perguntar(string pergunta)
         {
-            return Interagir(pergunta + caracteristica);
+            return DialogResult.Yes == ObterResposta(pergunta);
         }
 
-        public bool IsPerguntaValida(DialogResult pergunta)
+        public bool Perguntar(string pergunta, string caracteristica)
         {
-            return pergunta == DialogResult.Yes;
-        }
-
-        public bool Interagir(string pergunta)
-        {
-            return DialogResult.Yes == MostrarPergunta(pergunta);
-        }
-
-        public DialogResult MostrarPergunta(string pergunta)
+            return Perguntar(pergunta + caracteristica);
+        }        
+       
+        public DialogResult ObterResposta(string pergunta)
         {
             return MessageBox.Show($"{ pergunta}?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
 
-        public void Acertou()
+        public void Encerrar()
         {
             MessageBox.Show("Acertei de novo!", "Jogo Gourmet", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-        }
+        }        
     }
 }

@@ -62,7 +62,8 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
-    <Compile Include="PerguntarPrato.cs" />
+    <Compile Include="PerguntaPrato.cs" />
+    <Compile Include="IPratoService.cs" />
     <Compile Include="PratoService.cs" />
     <Compile Include="Prato.cs" />
     <Compile Include="Program.cs" />

@@ -5,10 +5,10 @@ namespace JogoGourmet
 {
     public partial class Form1 : Form
     {        
-        private PerguntarPrato perguntar;
+        private PerguntaPrato perguntar;
         private Prato pratoPadrao;
         private Prato pratoAlternativo;
-        private PratoService pratoService;
+        private IPratoService pratoService;
 
         public Form1()
         {
@@ -20,7 +20,7 @@ namespace JogoGourmet
              pratoAlternativo = new Prato(pratoService, "Bolo de Chocolate");
 
             //Apresenta prato na primeira execução do jogo
-            perguntar = new PerguntarPrato(pratoPadrao, pratoAlternativo, "massa", pratoService);
+            perguntar = new PerguntaPrato(pratoPadrao, pratoAlternativo, "massa", pratoService);
         }
 
         private void btnOK_Click(object sender, EventArgs e)

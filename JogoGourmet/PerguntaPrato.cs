@@ -1,13 +1,13 @@
 ﻿namespace JogoGourmet
 {
-    public class PerguntarPrato : BasePrato
+    public class PerguntaPrato : BasePrato
     {
         private const string _PERGUNTA = "O prato que você pensou é ";
         private BasePrato _respostaSim;
         private BasePrato _respostaNao;
-        private PratoService _pratoService;
+        private IPratoService _pratoService;
 
-        public PerguntarPrato(BasePrato respostaSim, BasePrato respostaNao, string caracteristica, PratoService pratoService)
+        public PerguntaPrato(BasePrato respostaSim, BasePrato respostaNao, string caracteristica, IPratoService pratoService)
             : base(caracteristica)
         {
             _respostaSim = respostaSim;
@@ -22,7 +22,7 @@
             //ao atribuir o retorno o método Executar para _respostaSim e _respostaNao
             //o código substitui o nó de prato por um nó de habilidade, fazendo com
             //que o nó de prato se torne a resposta não do prato pensado.
-            if (_pratoService.MostraPergunta(_PERGUNTA, Descricao))
+            if (_pratoService.Perguntar(_PERGUNTA, Descricao))
                 _respostaSim = _respostaSim.Perguntar();
             else
                 _respostaNao = _respostaNao.Perguntar();
