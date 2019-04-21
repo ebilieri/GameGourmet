@@ -29,10 +29,6 @@
                 _respostaNao = _respostaNao.Perguntar();
 
             return this;
-        }
-
-        
-
-        
+        }           
     }
 }
